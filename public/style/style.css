@@ -16,6 +16,9 @@ body{
     margin: 0 auto;
     background-position: center;
 }
+.abt{
+   margin:40px;
+}
 .profile div{
     position:relative;
     width:100%;
