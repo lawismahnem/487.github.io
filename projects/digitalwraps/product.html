@@ -1,0 +1,67 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Digitalwraps Cebu</title>
+</head>
+<body>
+    <section class="showcase">
+        <header>
+            <img class="logo" src="media/logo.png" alt="">
+            <div class="toggle"></div>
+        </header>
+        <div class="products">
+            <div class="product-nav">Digitalwraps works</div>
+            <div class="products-container">
+                <script>
+                      fetch("data.json")
+                        .then(response => response.json())
+                        .then(data =>{
+                            for (var i = 0; i<data.product.length; i++){
+                        let pname = data.product[i].p_name;
+                        let pdetails = data.product[i].p_details;
+                        let imgid = data.product[i].p_img_id;
+                            document.querySelector(".products-container").innerHTML += `<div class="card">
+                            <div class="imgBox">
+                                <img src="media/product/${imgid}" alt="DW Cebu" class="mouse">
+                            </div>
+                            <div class="contentBox">
+                                <h3>${pname}</h3>
+                                <h2 class="price"><small>${pdetails}</small></h2>
+                                <a href="https://www.facebook.com/messages/t/126502160541970" class="contact" target="_blank">Contact Us</a>
+                            </div>
+                        </div>`;
+                         }
+                        })
+                </script>
+            </div>    
+            </div>
+            </div>
+         </div>
+    <!-- <video src="media/video.mp4" muted loop autoplay></video> -->
+    <div class="overlay"></div>
+    <ul class="social">
+        <li><a href="https://www.facebook.com/profile.php?id=61550907336272"><img src="media/facebook.png" alt=""></a></li>
+        <li><a href="https://www.facebook.com/profile.php?id=61550907336272"><img src="media/instagram.png" alt=""></a></li>
+    </ul>
+    </section>
+    <div class="menu">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#">Product</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+</body>
+<script>
+    const menuToggle = document.querySelector('.toggle');
+    const showcase = document.querySelector('.showcase');
+
+        menuToggle.addEventListener('click', () => {
+        menuToggle.classList.toggle('active');
+        showcase.classList.toggle('active');
+        })
+</script>
+</html>
