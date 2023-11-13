@@ -39,7 +39,7 @@
                 var elem = document.getElementById('h1');
                     elem.innerHTML += `<h1>${obj[0].name.common}</h1><h4>${obj[0].name.official}</h4>`;
                 var elembody = document.getElementById('container');
-                elembody.innerHTML += `<h1>${obj[0].currencies.PHP.name}</h1><h1>${obj[0].population}</h1><h1>${obj[0].timezones}</h1><h1>${obj[0].capital}</h1><h1>${obj[0].languages}</h1>`;
+                elembody.innerHTML += `<h1>${JSON.stringify(obj[0].currencies)}</h1><h1>${obj[0].population}</h1><h1>${obj[0].timezones}</h1><h1>${obj[0].capital}</h1><h1>${obj[0].languages}</h1>`;
                 console.log(obj[0])
             };
      </script>
