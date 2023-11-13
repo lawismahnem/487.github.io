@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css?family=Fira Code');
+
+*{
+    padding:0 px;
+    margin:0 px;
+    background-color: #5C5470;
+    font-family: 'Fira Code';
+    font-size: 12px;
+    color: #FAF0E6;
+}
+body{
+    margin: 0px;
+    padding: 0px;
+}
+.header{
+    width:100%;
+    height: 200px;
+    padding-top: 150px;
+    background-color:#352F44;
+    margin: 0px;
+}
+
+#search-box{
+    margin: 0 auto;
+    display: block;
+    width:20em;height:55px; 
+    border:1px solid #B9B4C7;
+    border-radius: 10px;
+    padding-left:48px;
+    padding-top:1px;
+    font-size:18px;
+    background-image:url('https://icons.iconarchive.com/icons/github/octicons/48/search-16-icon.png');
+    background-repeat:no-repeat;
+    background-position:left;
+    outline:0;
+    }
+#search-box:-webkit-search-cancel-button{
+    position:relative;
+    right:20px;    
+ }
+.body-container{
+    background-color: #5C5470;
+    width: 977px;
+    margin:0 auto;
+}
+#flag{
+    padding:10px;
+    transform: scale(0.5);
+    transition: 0.5s;
+    
+}
+#gamediv:hover #flag{
+    transform: scale(1.5) translateY(-15px);
+}
+#flag-img{
+    width:150px;
+    height:200px;
+    text-align: center;
+    padding:10px;
+}
+#flag-img img{
+    width:150px;
+    height:100px;
+    
+    transition: 0.5s;
+}
+#flag-img:hover img{
+    border-radius: 0px;
+    border:1px solid #352F44;
+    border-radius: 20px;
+}
+#flag-div{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 67px;
+}
+.footer{
+    margin: 0 auto;
+    width:977px;
+    text-align: center;
+}
+#h1{
+    margin:0px;
+    padding:0px;
+}
+#h1 h1{
+    font-size: 55px;
+    background-color:#352F44;
+    margin:0px;
+    padding:0px;
+}
+#h1 h4{
+    font-size: 15px;
+    background-color:#352F44;
+    margin:0px;
+    padding:0px;
+}

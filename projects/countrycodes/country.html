@@ -1,0 +1,43 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Country Code Library</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="header">
+        <div id="h1"></div>
+    </div>
+    <div class="body-container">
+    </div>
+    <div class="footer"><p>&copy 2023 | CountryCodeLibrary</p></div>
+    <script>
+        const searchParams = new URLSearchParams(window.location.search);
+        let CountryCode = searchParams.get('countrycode');
+        console.log("=> ",CountryCode)
+        let getdata = (cc) => {
+            $.ajax({
+                url: 'https://restcountries.com/v3.1/alpha/'+cc+'',
+                type: 'GET',
+                dataType: 'json',
+                headers: {
+                    'accept': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                },
+                success: function (appendData) {
+                let obj = appendData;
+                data(obj);
+                }   
+            });
+        }
+        getdata(CountryCode);
+        data   = (obj) => { 
+                var elem = document.getElementById('h1');
+                    elem.innerHTML += `<h1>${obj[0].name.common}</h1><h4>${obj[0].name.official}</h4>`;
+            };
+     </script>
+</body>
+</html>

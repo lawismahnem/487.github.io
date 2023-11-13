@@ -1,0 +1,56 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Country Code Library</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="header">
+            <input id="search-box" type="text" placeholder="Search">
+    </div>
+    <div class="body-container">
+        <div id="flag-div"></div>
+    </div>
+    <div class="footer"><p>&copy 2023 | CountryCodeLibrary</p></div>
+    <script>
+        let appendData = "";
+        let data = "";
+        let getdata = () => {
+            $.ajax({
+                url: 'data.json',
+                type: 'GET',
+                dataType: 'json',
+                headers: {
+                    'accept': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                },
+                success: function (appendData) {
+                let obj = appendData;
+                data(obj);
+                }   
+            });
+        }
+        getdata(); 
+            data   = (obj) => {
+                Object.keys(obj).forEach(function(key) {
+                    var elem = document.getElementById('flag-div');
+                    elem.innerHTML += `<a href='country.html?countrycode=${key}'><div id='flag-img'><img src='https://flagcdn.com/h240/${key}.png'/><h1>${key.toUpperCase()}</h1><h2 id="country">${obj[key]}</h2></div></a>`;
+                    });
+            }
+
+            //search 
+            $(document).ready(function(){
+                $("#search-box").on("keyup", function() {
+                    console.log("Hit")
+                    var value = $(this).val().toLowerCase();
+                    $("#flag-div div").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
+                });
+            });
+        </script>
+</body>
+</html>
