@@ -12,6 +12,7 @@
         <div id="h1"></div>
     </div>
     <div class="body-container">
+        <div id="container"></div>
     </div>
     <div class="footer"><p>&copy 2023 | CountryCodeLibrary</p></div>
     <script>
@@ -37,6 +38,9 @@
         data   = (obj) => { 
                 var elem = document.getElementById('h1');
                     elem.innerHTML += `<h1>${obj[0].name.common}</h1><h4>${obj[0].name.official}</h4>`;
+                var elembody = document.getElementById('container');
+                elembody.innerHTML += `<h1>${obj[0].currencies.PHP.name}</h1><h1>${obj[0].currencies.PHP.symbol}</h1><h1>${obj[0].population}</h1><h1>${obj[0].timezones}</h1><h1>${obj[0].capital}</h1><h1>${obj[0].languages}</h1>`;
+                console.log(obj[0])
             };
      </script>
 </body>
