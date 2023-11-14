@@ -18,8 +18,9 @@
     <script>
         let appendData = "";
         let data = "";
-        let getdata = () => {
-            $.ajax({
+        let getdata = async () => {
+        try{    
+            await $.ajax({
                 url: 'data.json',
                 type: 'GET',
                 dataType: 'json',
@@ -31,7 +32,9 @@
                 let obj = appendData;
                 data(obj);
                 }   
-            });
+            });} catch (error) {
+                console.error(error);
+            }
         }
         getdata(); 
             data   = (obj) => {

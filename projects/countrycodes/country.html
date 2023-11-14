@@ -18,10 +18,19 @@
     <script>
         const searchParams = new URLSearchParams(window.location.search);
         let CountryCode = searchParams.get('countrycode');
-        console.log("=> ",CountryCode)
-        let getdata = (cc) => {
-            $.ajax({
-                url: 'https://restcountries.com/v3.1/alpha/'+cc+'',
+        
+        let country = async(obj,cc) => {
+            for (let i = 0; i < obj.length; i++) {
+                    if (obj[i].cca2 == cc.toUpperCase()){
+                        let cdata = obj[i];
+                        data(cdata);
+                    }
+                }
+        }
+        let getdata = async(cc) => {
+        try{
+            await $.ajax({
+                url: 'cdata.json',
                 type: 'GET',
                 dataType: 'json',
                 headers: {
@@ -30,17 +39,38 @@
                 },
                 success: function (appendData) {
                 let obj = appendData;
-                data(obj);
+                country(obj,cc);
                 }   
-            });
+            });} catch (err) {
+                console.error(err);
+            }
         }
         getdata(CountryCode);
-        data   = (obj) => { 
+        data   = async (cdata) => { 
+                let lang = [];
+                console.log("=> ",lang)
+                console.log("=>d",cdata.cca2)
                 var elem = document.getElementById('h1');
-                    elem.innerHTML += `<h1>${obj[0].name.common}</h1><h4>${obj[0].name.official}</h4>`;
+                    elem.innerHTML += `<h1>${cdata.name.common}</h1><h4>${cdata.name.official}</h4>`;
                 var elembody = document.getElementById('container');
-                elembody.innerHTML += `<h1>${JSON.stringify(obj[0].currencies)}</h1><h1>${obj[0].population}</h1><h1>${obj[0].timezones}</h1><h1>${obj[0].capital}</h1><h1>${JSON.stringify(obj[0].languages)}</h1>`;
-                console.log(obj[0])
+                elembody.innerHTML += `
+                    <h1>
+                        ${JSON.stringify(cdata.currencies)}
+                    </h1>
+                    <h1>
+                        ${cdata.population}
+                    </h1>
+                    <h1>
+                        ${cdata.timezones}
+                    </h1>
+                    <h1>
+                        ${cdata.capital}
+                    </h1>
+                    <h1>
+                        ${
+                            JSON.stringify(cdata.languages)
+                        }
+                    </h1>`;
             };
      </script>
 </body>
