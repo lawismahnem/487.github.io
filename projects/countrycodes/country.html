@@ -48,8 +48,6 @@
         getdata(CountryCode);
         data   = async (cdata) => { 
                 let lang = [];
-                console.log("=> ",lang)
-                console.log("=>d",cdata.cca2)
                 var elem = document.getElementById('h1');
                     elem.innerHTML += `<h1>${cdata.name.common}</h1><h4>${cdata.name.official}</h4>`;
                 var elembody = document.getElementById('container');
