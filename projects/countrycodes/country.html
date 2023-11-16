@@ -27,6 +27,12 @@
                     }
                 }
         }
+        let region = async(x) => {
+            await console.log(x);
+           x = "x+x";
+           return x;
+        }
+
         let getdata = async(cc) => {
         try{
             await $.ajax({
@@ -47,28 +53,41 @@
         }
         getdata(CountryCode);
         data   = async (cdata) => { 
-                let lang = [];
+                let lang = JSON.stringify(cdata.currencies.NGN);
+                let dlang = Object.keys(cdata.currencies)[0];
+                let d = JSON.parse(lang);
+                let a = b = {};
+                a.region = cdata.region;
                 var elem = document.getElementById('h1');
                     elem.innerHTML += `<h1>${cdata.name.common}</h1><h4>${cdata.name.official}</h4>`;
                 var elembody = document.getElementById('container');
                 elembody.innerHTML += `
                     <h1>
-                        ${JSON.stringify(cdata.currencies)}
+                        ${JSON.stringify(cdata.languages)}
                     </h1>
                     <h1>
-                        ${cdata.population}
+                        Population: ${cdata.population}
                     </h1>
                     <h1>
-                        ${cdata.timezones}
+                        Timezone: ${cdata.timezones}
                     </h1>
                     <h1>
-                        ${cdata.capital}
+                        Capital: ${cdata.capital}
                     </h1>
                     <h1>
-                        ${
-                            JSON.stringify(cdata.languages)
+                        Region: ${cdata.region}
+                    </h1>
+                    <h1>
+                        Currency: ${
+                            JSON.parse(JSON.stringify(cdata.currencies.NGN.name))
                         }
-                    </h1>`;
+                    </h1>
+                    <h1>
+                        Currency Symbol: ${
+                            JSON.parse(JSON.stringify(cdata.currencies.NGN.symbol))
+                        }
+                    </h1>
+                    `;
             };
      </script>
 </body>
