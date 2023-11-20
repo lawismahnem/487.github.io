@@ -27,10 +27,14 @@
                     }
                 }
         }
-        let region = async(x) => {
-            await console.log(x);
-           x = "x+x";
-           return x;
+        let region = async(cur) => {
+            let arr = [];
+            for (let x in cur) {
+                console.log("==>", cur[x])
+                arr.push(cur[x]);
+                };
+                console.log("===>",arr)
+                return arr;
         }
 
         let getdata = async(cc) => {
@@ -52,12 +56,10 @@
             }
         }
         getdata(CountryCode);
+
         data   = async (cdata) => { 
-                let lang = JSON.stringify(cdata.currencies.NGN);
-                let dlang = Object.keys(cdata.currencies)[0];
-                let d = JSON.parse(lang);
                 let a = b = {};
-                a.region = cdata.region;
+                console.log(region(cdata.currencies));
                 var elem = document.getElementById('h1');
                     elem.innerHTML += `<h1>${cdata.name.common}</h1><h4>${cdata.name.official}</h4>`;
                 var elembody = document.getElementById('container');
@@ -66,7 +68,7 @@
                         ${JSON.stringify(cdata.languages)}
                     </h1>
                     <h1>
-                        Population: ${cdata.population}
+                        Population: ${cdata.population.toLocaleString('en-US')}
                     </h1>
                     <h1>
                         Timezone: ${cdata.timezones}
@@ -79,15 +81,21 @@
                     </h1>
                     <h1>
                         Currency: ${
-                            JSON.parse(JSON.stringify(cdata.currencies.NGN.name))
+                            cdata.currencies.AED
                         }
                     </h1>
                     <h1>
                         Currency Symbol: ${
-                            JSON.parse(JSON.stringify(cdata.currencies.NGN.symbol))
+                           cdata.currencies
+                        }
+                    </h1>
+                    <h1>
+                        Currency Symbol: ${
+                           cdata.flags
                         }
                     </h1>
                     `;
+                    console.log(cdata);
             };
      </script>
 </body>
